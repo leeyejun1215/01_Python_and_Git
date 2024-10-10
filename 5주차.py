@@ -51,6 +51,5 @@ class RealEstate:
         print(f"위치: {self.location}, 평수: {self.size}, 건물 종류: {self.building_type}, "
               f"가격: {self.price}, 건축년도: {self.year_built}")
 
-# 예시 실행
 property_info = RealEstate("Seoul", 85, "Apartment", 500000000, 2015)
 property_info.show_info()
