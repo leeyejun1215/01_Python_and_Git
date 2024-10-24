@@ -6,6 +6,7 @@ class person:
         self.contact = contact
     def info(self):
         print(f"회원님의 전화번호는{self.name} 나이는 {self.age} 연락처는 {self.contact} 입니다.")
+        print(f"회원님의 이름은 {self.name} 나이는 {self.age} 연락처는 {self.contact} 입니다.")
 
 name = input("이름을 입력하세요:")
 age = input("나이를 입력하세요: ")
