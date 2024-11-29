@@ -1,83 +1,170 @@
-# 선 그래프
+# Line chart
 import matplotlib.pyplot as plt
 
 x = [1, 2, 3, 4, 5]
-y = [2, 3, 5, 7, 11]
+y = [10, 15, 13, 18, 20]
 
-plt.plot(x, y, marker='o')
-plt.title('선 그래프')
-plt.xlabel('X 값')
-plt.ylabel('Y 값')
+plt.plot(x, y, marker='o', linestyle='-', color='b', label='temperature')
+
+plt.title('Daily temperature trend')
+
+plt.xlabel('Time (hour)')
+plt.ylabel('Temperature (C)')
+
+plt.legend()
+
 plt.grid(True)
-plt.show()
 
-# 막대 그래프
+plt.savefig("./results/linechart.png")
+
+# Bar chart
 import matplotlib.pyplot as plt
 
-categories = ['A', 'B', 'C', 'D']
-values = [3, 7, 2, 5]
+categories = ['Apple', 'Banana', 'Orange', 'Strawberry', 'Grape']
+values = [25, 30, 15, 20, 35]
+
+plt.clf()
 
 plt.bar(categories, values, color='skyblue')
-plt.title('막대 그래프')
-plt.xlabel('카테고리')
-plt.ylabel('값')
-plt.show()
 
-# 히스토그램
+plt.title('Fruit Sales')
+
+plt.xlabel('Fruit')
+plt.ylabel('Sales')
+
+plt.savefig("./results/bar_chart.png")
+
+# Histogram chart
 import matplotlib.pyplot as plt
 import numpy as np
 
 data = np.random.randn(1000)
 
-plt.hist(data, bins=30, color='skyblue', edgecolor='black')
-plt.title('히스토그램')
-plt.xlabel('값')
-plt.ylabel('빈도')
-plt.show()
+plt.clf()
 
-# 원 그래프
+plt.hist(data, bins=20, color='skyblue', edgecolor='black')
+
+plt.title('Histogram chart')
+
+plt.xlabel('Values')
+plt.ylabel('Frequency')
+
+plt.savefig("./results/Histogram.png")
+
+# Pie chart
 import matplotlib.pyplot as plt
 
-labels = ['A', 'B', 'C', 'D']
-sizes = [25, 30, 20, 25]
+labels = ['English', 'Math', 'Science', 'History']
+sizes = [45, 30, 15, 10]
 
-plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff','#99ff99','#ffcc99'])
-plt.title('원 그래프')
-plt.axis('equal')  # 원형으로 표시
-plt.show()
+plt.clf()
 
-# 산포도 그래프
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=['lightblue', 'lightgreen', 'lightcoral', 'lightsalmon'])
+
+plt.title('Subjects Distribution')
+
+plt.savefig("./results/piechart.png")
+
+# Scatter chart
+import matplotlib.pyplot as plt
+import random
+
+x = [random.uniform(0, 100) for _ in range(1000)]
+y = [random.uniform(0, 100) for _ in range(1000)]
+
+plt.clf()
+
+plt.scatter(x, y, label='Random Data Points', color='green', marker='o', s=30, alpha=0.5)
+
+plt.title('Scatter Plot Example')
+
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+
+plt.legend()
+
+plt.savefig("./results/scatter.png")
+
+plt.close()
+
+# Scatter chart
+import matplotlib.pyplot as plt
+import random
+
+x = [random.uniform(0, 100) for _ in range(200)]
+y = [2 * val + 1 + random.uniform(-10, 10) for val in x]
+
+plt.clf()
+
+plt.scatter(x, y, label='Scatter Plot', color='blue', marker='o', s=30, alpha=0.5)
+
+plt.title('Scatter Plot Example')
+
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+
+plt.legend()
+
+plt.savefig("./results/scatter_2.png")
+
+# Scatter chart with line
+import matplotlib.pyplot as plt
+import random
+
+x = [random.uniform(0, 100) for _ in range(200)]
+y = [2 * val + 1 + random.uniform(-10, 10) for val in x]
+
+plt.clf()
+
+plt.scatter(x, y, label='Scatter Plot', color='blue', marker='o', s=30, alpha=0.5)
+
+x_line = range(101)
+y_line = [2 * val + 1 for val in x_line]
+plt.plot(x_line, y_line, label='y = 2x + 1', color='red')
+
+plt.title('Scatter Plot Example')
+
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+
+plt.legend()
+
+plt.savefig("./results/scatter_with_line.png")
+
+# Boxplot
+import matplotlib.pyplot as plt
+import random
+
+data = [random.gauss(0, 1) for _ in range(100)]
+outliers = [10, -10]
+
+plt.clf()
+
+plt.boxplot(data + outliers, vert=False, patch_artist=True)
+
+plt.title('Boxplot Example with Outliers')
+
+plt.xlabel('Values')
+
+plt.xticks(range(-15, 16, 5))
+
+plt.savefig("./results/boxplot_2.png")
+
+# Heatmap
 import matplotlib.pyplot as plt
 import numpy as np
 
-x = np.random.rand(50)
-y = np.random.rand(50)
+data = np.random.rand(10, 10)
 
-plt.scatter(x, y, color='purple')
-plt.title('산포도 그래프')
-plt.xlabel('X 값')
-plt.ylabel('Y 값')
-plt.show()
+plt.clf()
 
-# 상자 그림
-import matplotlib.pyplot as plt
-import numpy as np
+heatmap = plt.imshow(data, cmap='YlGnBu', aspect='auto')
 
-data = np.random.randn(100)  # 정규 분포를 따르는 100개의 데이터
+plt.colorbar(heatmap)
 
-plt.boxplot(data)
-plt.title('상자 그림')
-plt.ylabel('값')
-plt.show()
+plt.title('Heatmap Example')
 
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
 
-# 열 지도
-import matplotlib.pyplot as plt
-import numpy as np
-
-data = np.random.rand(10, 12)
-
-plt.imshow(data, cmap='coolwarm', interpolation='nearest')
-plt.colorbar()
-plt.title('열 지도')
-plt.show()
+plt.savefig("./results/heatmap.png")
